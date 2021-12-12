@@ -137,6 +137,15 @@ document.body.onkeydown = function (e) {
     }
 }
 
+document.body.onmousedown = function (e) {
+    if (e.button == 0 && !player.isInJumping()) {
+        player.jump = true
+    }
+    if (!game && e.button == 0 && gameOverSoundIsEnded) {
+        startGame()
+    }
+}
+
 function checkCollision(obstacle) {
     if (obstacle.position.y > player.position.y && obstacle.position.y < player.position.y + player.heigth - 15
         && obstacle.position.x > player.position.x+15 && obstacle.position.x < player.position.x + player.width-15) {
@@ -188,12 +197,7 @@ function drawMainEntities(canvasContext, background1, background2) {
     canvasContext.drawImage(player.isInJumping() ? player.runImage : player.idleImage, player.position.x, player.position.y, player.width, player.heigth)
 }
 
-document.addEventListener('click', printMousePos, true);
-function printMousePos(e) {
-    cursorX = e.pageX;
-    cursorY = e.pageY;
-    console.log(`${cursorX},${cursorY}`)
-}
+
 
 function drawLight(canvasContext) {
     canvasContext.beginPath()
