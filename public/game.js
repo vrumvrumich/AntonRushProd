@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', function () {
     dino.src = "game/dino.png"
     time = performance.now()
     canvas.heigth = 400
-    var center = new Point(canvas.width / 2, canvas.heigth / 2)
+    var center = new Point(document.documentElement.clientHe / 2, canvas.heigth / 2)
     gameOverObject = new Object(center.x - (canvas.width / 4) / 2, center.y - (canvas.heigth / 2.5) / 2, canvas.width / 4, canvas.heigth / 2.5)
 
 
