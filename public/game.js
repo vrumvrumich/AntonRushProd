@@ -73,8 +73,8 @@ gameOverImage.src = "game/game_over.png"
 var obstacles = []
 const floor = 300
 
-var speed = document.documentElement.clientWidth/300
-var spawnTime = document.documentElement.clientWidth/2;
+var speed = (document.documentElement.clientWidth/document.documentElement.clientHeight) * 1.5
+var spawnTime = (document.documentElement.clientWidth/document.documentElement.clientHeight) * 300;
 var game = false;
 var isGameStarted = false
 var score = 0
