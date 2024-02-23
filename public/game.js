@@ -87,13 +87,14 @@ var mainThemeAudios = [new Audio("game/mainTheme1.mp3"), new Audio("game/mainThe
 var timer, sound, time, currentMainTheme;
 var canvas = document.getElementById("canvas")
 var canvasContext = canvas.getContext("2d")
-var multiplicator = detectMob()
+var multiplicator = detectMob(10, 40)
+var multiplicator2 = detectMob(10, 50)
 var gameOverObject
 var gameOverSoundIsEnded = true
 let player = preparePlayer()
 
 
-function detectMob() {
+function detectMob(s1 , s2) {
     const toMatch = [
         /Android/i,
         /webOS/i,
@@ -106,7 +107,7 @@ function detectMob() {
 
     if(toMatch.some((toMatchItem) => {
         return navigator.userAgent.match(toMatchItem);
-    })) { return 10 }  else{ return 40 }
+    })) { return s1 }  else{ return s2 }
 }
 document.addEventListener('DOMContentLoaded', function () {
     var [background1, background2] = createBackgrounds()
@@ -173,7 +174,7 @@ document.body.onmousedown = function (e) {
 
 function checkCollision(obstacle) {
     if (obstacle.position.y >= player.position.y && obstacle.position.y <= player.position.y + player.height - 50
-        && obstacle.position.x >= player.position.x && obstacle.position.x <= player.position.x + player.width-50 ) {
+        && obstacle.position.x >= player.position.x && obstacle.position.x <= player.position.x + player.width-multiplicator2 ) {
         gameOver()
     }
 }
