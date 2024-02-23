@@ -73,7 +73,7 @@ gameOverImage.src = "game/game_over.png"
 var obstacles = []
 const floor = 300
 
-var speed = (document.documentElement.clientWidth/document.documentElement.clientHeight) * 1.5
+var speed = (document.documentElement.clientWidth/document.documentElement.clientHeight) * 2.5
 var spawnTime = (document.documentElement.clientWidth/document.documentElement.clientHeight) * 300;
 var game = false;
 var isGameStarted = false
@@ -103,7 +103,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (game) {
             // canvas.width = canvas.width
             if (performance.now() - time > spawnTime) {
-                obstacles.push(new Obstacles(canvas.width - 70, document.documentElement.clientHeight/1.53, 110 , document.documentElement.clientHeight/5.1))
+                obstacles.push(new Obstacles(canvas.width - 70, document.documentElement.clientHeight/1.53, document.documentElement.clientWidth/13 , document.documentElement.clientHeight/5.1))
                 time = performance.now()
             }
             moveBackground(background1, background2)
@@ -213,5 +213,5 @@ function preparePlayer() {
     let rushImage = new Image()
     idleImage.src = "game/main_character.png"
     rushImage.src = "game/rush.png"
-    return new Player(80, (document.documentElement.clientHeight - document.documentElement.clientHeight/2.8), 120, document.documentElement.clientHeight/5, idleImage, rushImage).setJumpheight(document.documentElement.clientHeight/4)
+    return new Player(80, (document.documentElement.clientHeight - document.documentElement.clientHeight/2.8), document.documentElement.clientWidth/11, document.documentElement.clientHeight/5, idleImage, rushImage).setJumpheight(document.documentElement.clientHeight/4)
 }
