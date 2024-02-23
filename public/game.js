@@ -46,11 +46,11 @@ class Player extends Object {
 
     performJump() {
         if (this.jump) {
-            if (this.position.y > this.initialPosition.y - this.jumpheight) this.position.y -= (this.jumpheight/(document.documentElement.clientWidth/25).toPrecision(12))
+            if (this.position.y > this.initialPosition.y - this.jumpheight) this.position.y -= (this.jumpheight/((document.documentElement.clientWidth/document.documentElement.clientWidth) * 40).toPrecision(12))
             else { this.fall = true; this.jump = false;  this.position.y = (this.initialPosition.y.toPrecision(12) - this.jumpheight.toPrecision(12)) }
         }
         else if (this.fall) {
-            if (this.position.y < this.initialPosition.y) this.position.y += (this.jumpheight/(document.documentElement.clientWidth/25).toPrecision(12))
+            if (this.position.y < this.initialPosition.y) this.position.y += (this.jumpheight/((document.documentElement.clientWidth/document.documentElement.clientWidth) * 40).toPrecision(12))
             else {
                 this.position.y = this.initialPosition.y
                 this.fall = false
