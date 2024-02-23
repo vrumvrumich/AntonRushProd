@@ -46,17 +46,19 @@ class Player extends Object {
 
     performJump() {
         if (this.jump) {
-            if (this.position.y > this.initialPosition.y - this.jumpheight) this.position.y -= (this.jumpheight/((document.documentElement.clientWidth/document.documentElement.clientWidth) * 40).toPrecision(12))
+            if (this.position.y > this.initialPosition.y - this.jumpheight) this.position.y -= (this.jumpheight/((document.documentElement.clientWidth/document.documentElement.clientWidth) * multiplicator).toPrecision(12))
             else { this.fall = true; this.jump = false;  this.position.y = (this.initialPosition.y.toPrecision(12) - this.jumpheight.toPrecision(12)) }
         }
         else if (this.fall) {
-            if (this.position.y < this.initialPosition.y) this.position.y += (this.jumpheight/((document.documentElement.clientWidth/document.documentElement.clientWidth) * 40).toPrecision(12))
+            if (this.position.y < this.initialPosition.y) this.position.y += (this.jumpheight/((document.documentElement.clientWidth/document.documentElement.clientWidth) * multiplicator).toPrecision(12))
             else {
                 this.position.y = this.initialPosition.y
                 this.fall = false
             }
         }
     }
+
+
 
     isInJumping(){
         return this.jump || this.fall
@@ -85,9 +87,27 @@ var mainThemeAudios = [new Audio("game/mainTheme1.mp3"), new Audio("game/mainThe
 var timer, sound, time, currentMainTheme;
 var canvas = document.getElementById("canvas")
 var canvasContext = canvas.getContext("2d")
+var multiplicator = detectMob()
 var gameOverObject
 var gameOverSoundIsEnded = true
 let player = preparePlayer()
+
+
+function detectMob() {
+    const toMatch = [
+        /Android/i,
+        /webOS/i,
+        /iPhone/i,
+        /iPad/i,
+        /iPod/i,
+        /BlackBerry/i,
+        /Windows Phone/i
+    ];
+
+    if(toMatch.some((toMatchItem) => {
+        return navigator.userAgent.match(toMatchItem);
+    })) { return 100 }  else{ return 40 }
+}
 document.addEventListener('DOMContentLoaded', function () {
     var [background1, background2] = createBackgrounds()
     var dino = new Image()
