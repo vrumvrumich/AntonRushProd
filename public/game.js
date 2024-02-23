@@ -46,11 +46,11 @@ class Player extends Object {
 
     performJump() {
         if (this.jump ) {
-            if (this.position.y != this.initialPosition.y - this.jumpheight) this.position.y -= this.jumpheight/30
+            if (this.position.y.toPrecision(12) != this.initialPosition.y.toPrecision(12) - this.jumpheight.toPrecision(12)) this.position.y -= this.jumpheight.toPrecision(12)/40
             else { this.fall = true; this.jump = false }
         }
         else if (this.fall) {
-            if (this.position.y != this.initialPosition.y) this.position.y += this.jumpheight/30
+            if (this.position.y.toPrecision(12) != this.initialPosition.y.toPrecision(12)) this.position.y += this.jumpheight.toPrecision(12)/40
             else this.fall = false
         }
     }
@@ -74,7 +74,7 @@ var obstacles = []
 const floor = 300
 
 var speed = document.documentElement.clientWidth/300
-var spawnTime = 1000;
+var spawnTime = document.documentElement.clientWidth/2;
 var game = false;
 var isGameStarted = false
 var score = 0
@@ -213,5 +213,5 @@ function preparePlayer() {
     let rushImage = new Image()
     idleImage.src = "game/main_character.png"
     rushImage.src = "game/rush.png"
-    return new Player(80, (document.documentElement.clientHeight - document.documentElement.clientHeight/2.8), 120, document.documentElement.clientHeight/5, idleImage, rushImage).setJumpheight(180)
+    return new Player(80, (document.documentElement.clientHeight - document.documentElement.clientHeight/2.8), 120, document.documentElement.clientHeight/5, idleImage, rushImage).setJumpheight(document.documentElement.clientHeight/4)
 }
