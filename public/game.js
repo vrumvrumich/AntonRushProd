@@ -88,7 +88,7 @@ var timer, sound, time, currentMainTheme;
 var canvas = document.getElementById("canvas")
 var canvasContext = canvas.getContext("2d")
 var multiplicator = detectMob(10, 40)
-var multiplicator2 = detectMob(10, 50)
+var multiplicator2 = detectMob(20, 50)
 var gameOverObject
 var gameOverSoundIsEnded = true
 let player = preparePlayer()
