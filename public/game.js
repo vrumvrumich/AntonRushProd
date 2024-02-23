@@ -106,7 +106,7 @@ function detectMob() {
 
     if(toMatch.some((toMatchItem) => {
         return navigator.userAgent.match(toMatchItem);
-    })) { return 100 }  else{ return 40 }
+    })) { return 10 }  else{ return 40 }
 }
 document.addEventListener('DOMContentLoaded', function () {
     var [background1, background2] = createBackgrounds()
